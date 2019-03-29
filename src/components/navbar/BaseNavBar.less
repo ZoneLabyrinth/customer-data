@@ -1,0 +1,139 @@
+@import '../../styles/mixin.less';
+
+
+
+// //标签栏
+// .am-tabs-default-bar-content {
+//     height: 82px;
+// }
+
+// .am-tabs-default-bar-tab {
+//     font-size: 30px;
+//     height   : 100%;
+//     a {
+//         color : inherit;
+//         width : 100%;
+//         height: 100%;
+//     }
+// }
+
+//导航栏
+.am-navbar {
+    height: 80px;
+
+    .am-navbar-title {
+        padding    : 10px;
+        font-size  : 34px;
+        font-weight: bold
+    }
+}
+
+//气泡
+.overlay {
+    width: 267px;
+
+    .am-popover-item {
+        height   : 82px;
+        font-size: 28px;
+
+        .am-popover-item-container {
+            height    : 82px;
+            text-align: center;
+            .am-popover-item-content{
+                width: 100%;
+                text-align: left;
+                a{
+                    color: inherit;
+                    // i{
+                    //     font-size: 30px;
+                    //     margin: auto 30px;
+                    // }
+                }
+
+            }
+            .am-popover-item-icon{
+                width: 26px;
+                height: 26px;
+                margin: auto 30px;
+                i{
+                    font-size: 30px;
+                }
+            }
+        }
+    }
+
+    .am-popover-inner-wrapper {
+        background: #000;
+        color     : white;
+    }
+
+    .am-popover-arrow {
+        background: #000;
+    }
+}
+//搜索框样式
+.am-search {
+    position  : absolute;
+    width     : 90%;
+    height    : 80px;
+    background: #fff;
+    left: 17px;
+    // z-index: 1;
+}
+
+.am-search-input {
+    height: 60px;
+    border-radius: 15px;
+    background: rgba(51, 51, 51, 0.05);
+
+    .am-search-synthetic-ph {
+        height: 60px;
+
+        span {
+            line-height: 60px;
+            font-size  : 25px;
+
+            i {
+                background-size: 25px auto;
+                width          : 26px;
+                height         : 26px;
+            }
+        }
+    }
+}
+
+.am-search-input input[type=search] {
+    height: 60px;
+    font-size: 25px;
+    padding-left: 50px!important;
+}
+.am-search-cancel{
+    font-size: 28px;
+}
+
+
+//搜索列表
+.search-body{
+    .flex(@justify:flex-start,@dir:column);
+    position: absolute;
+    background: white;
+    z-index: 99;
+    min-height: 645px;
+    width: 100%;
+    .search-list{
+        position: relative;
+        width: 691px;
+        font-size: 30px;
+        height: 99px;
+        line-height: 99px;
+        .flex(@justify:space-between,@align:flex-start,@dir:row);
+        &::after{
+            .setBottomLine()
+        }
+        i{
+            width: 66px;
+            height: 64px;
+            font-size: 32px;
+        }
+    }
+}

@@ -1,26 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import BaseNavBar from './components/navbar/BaseNavBar'
+import Api from '@/api/api'
+import { BrowserRouter as Router, Switch, Route, Redirect, Link } from 'react-router-dom'
+import router from './router/index';
+import Information from './pages/infomation/Infomation';
+import Collect from './pages/collect/Collect';
+
+const tabs = [
+  { title: '专属信息', path: '/specail' },
+  { title: '通用信息', path: '/common' }
+];
 
 class App extends Component {
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <div className="App">
+            <BaseNavBar/>
+            {/* <Switch>
+
+                    <Route path='/'  component={Information}/>  
+                    <Route path='/collect' component={Collect} />
+
+            </Switch> */}
+        </div>
+      </Router>
     );
   }
 }

@@ -1,0 +1,39 @@
+@base-color: red;
+
+
+.flex(@justify:center,@align:center,@dir:row){
+    display: flex;
+    justify-content: @justify;
+    align-items: @align;
+    flex-direction: @dir;
+    flex-wrap: nowrap;
+}
+
+.ellipsis(){
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.scrollY(){
+    overflow-y: auto;
+    -webkit-overflow-scrolling-: touch;
+}
+
+.setBottomLine(@c:#c7c7c7,@b:solid){
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 1px;
+    width: 200%;
+    border-bottom: 1px @b @c;
+    color:@c;
+    transform-origin: 0 0;
+    transform: scale(0.5)
+}
+
+
+
+
