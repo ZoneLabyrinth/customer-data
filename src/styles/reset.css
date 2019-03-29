@@ -49,6 +49,7 @@ a{
   text-decoration: none;
   /*ios禁止页面在新窗口打开*/
   -webkit-touch-callout:none;
+  color: inherit;
 }
 em,i{
   font-style: normal;

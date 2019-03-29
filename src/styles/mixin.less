@@ -1,12 +1,12 @@
-@base-color: red;
+@base-color: #E14C46;
 
 
-.flex(@justify:center,@align:center,@dir:row){
+.flex(@justify:center,@align:center,@dir:row,@wrap:nowrap){
     display: flex;
     justify-content: @justify;
     align-items: @align;
     flex-direction: @dir;
-    flex-wrap: nowrap;
+    flex-wrap: @wrap;
 }
 
 .ellipsis(){
@@ -34,6 +34,10 @@
     transform: scale(0.5)
 }
 
+.wh(@w:100%,@h:100%){
+    width: @w;
+    height: @h;
+}
 
 
 

@@ -28,15 +28,6 @@ export default class BaseTabBar extends React.Component {
                 </StickyContainer>
                 <WhiteSpace />
 
-                {
-                    this.props.routes.map((route,key)=>{
-                        // if(route.exact){
-                            return <Route path={route.path} key={key} exact component={route.component}/>
-                        // }else{
-                        //     return <Route path={route.path} component={route.component} />
-                        // }
-                    })
-                }
 
             </div>
         )

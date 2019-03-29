@@ -1,9 +1,6 @@
 import React from 'react';
-import BaseNavBar from '../../components/navbar/BaseNavBar';
 import BaseTabBar from '../../components/tabbar/BaseTabBar';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
-import { Tabs, WhiteSpace, NavBar, Icon, Popover, SearchBar } from 'antd-mobile';
-import { StickyContainer } from 'react-sticky';
+import {Route,Redirect } from 'react-router-dom'
 
 const tabs = [
     { title: '专属信息', path: '/info/exclusive' },
@@ -18,9 +15,26 @@ export default class Information extends React.Component {
     render() {
         return (
             <div>
-                {/* <Router> */}
-                    <BaseTabBar tabs={tabs} routes={this.props.routes}/>
-                {/* </Router> */}
+                <BaseTabBar tabs={tabs}/>
+                {
+                        this.props.routes.map((route, key) => {
+                            if (route.exact) {
+                                return <Route key={key} exact path={route.path}
+                                    render={props => (
+                                        <route.component {...props} routes={route.routes} />
+                                    )}
+                                />
+                            } else {
+                                return <Route key={key} path={route.path}
+                                    render={props => (
+                                        <route.component {...props} routes={route.routes} />
+                                    )}
+                                />
+                            }
+                        })
+                    }
+                {/* <Redirect path='/info/exclusive' to='/info/exclusive/basic'/> */}
+
             </div>
         )
     }

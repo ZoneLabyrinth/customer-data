@@ -4,14 +4,8 @@ import { Route, Switch,Redirect } from 'react-router-dom';
 import './BaseNavBar.less'
 import router from '../../router/index';
 
-
-
-
 const Item = Popover.Item;
 const myIcon = icon => <i className={`iconfont ${icon}`}></i>;
-
-
-
 
 
 //菜单栏
