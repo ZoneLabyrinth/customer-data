@@ -1,0 +1,32 @@
+@import '../../styles/mixin.less';
+
+
+
+.list-body{
+    // margin: 14px 15px;
+    // max-height: calc(100vh - 344px);
+    // overflow: auto;
+    // border-radius: 20px;
+    // background: white;
+    // font-size: 24px;
+    ul{
+        overflow-x: auto;
+        li{
+            .flex(@justify:space-around);
+            height: 66px;
+            span{
+                flex: 1;
+                min-width: 130px;
+                .ellipsis();
+            }
+        }
+        .title{
+            color: #999;
+            background: #FFFDF0;
+        }
+    }
+
+}
+
+
+

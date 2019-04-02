@@ -3,14 +3,12 @@ import './SlideButton.less'
 import BScroll from 'better-scroll'
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 import PropTypes  from 'prop-types';
+import {withRouter} from 'react-router-dom'
 
 
-
-
-export default class SlideButton extends React.Component {
+class SlideButton extends React.Component {
     static propTypes = {
         navList: PropTypes.array.isRequired,
-        match: PropTypes.object.isRequired
     }
 
 
@@ -25,11 +23,12 @@ export default class SlideButton extends React.Component {
         this.scroll = React.createRef();
         this.container = React.createRef();
         this.scroller = null;
+        
 
     }
 
     componentDidMount(){
-        console.log(window.location.pathname)
+        const {location} = this.props
         setTimeout(()=>{
             this.setStyle();
             this.initScroll();
@@ -37,7 +36,6 @@ export default class SlideButton extends React.Component {
             const index = this.props.navList.findIndex(item => 
                 url.indexOf(item.path)!== -1
             )
-            console.log(index)
             this.adjust(index);
         },0)
     }
@@ -45,7 +43,6 @@ export default class SlideButton extends React.Component {
 
     //todo 点击选择项目
     handlerItemClick(index) {
-        console.log(index);
         this.adjust(index);
     }
 
@@ -53,7 +50,6 @@ export default class SlideButton extends React.Component {
         const container = this.container.current
         const aLi = container.children
         let sum = 0;
-        console.log(aLi)
         for (let i = 0; i < aLi.length; i++) {
             //每个外加左右3的margin
             sum += (aLi[i].clientWidth + 6)
@@ -68,7 +64,6 @@ export default class SlideButton extends React.Component {
         const viewportWidth = this.viewport.current.clientWidth;
         const tabListWidth = this.container.current.clientWidth
         const scrollWidth = this.scroll.current.clientWidth;
-        console.log(viewportWidth,tabListWidth,scrollWidth)
         // 需要滑动的最小距离
         const minTranslate = Math.min(0, scrollWidth - tabListWidth)
         // 滑动到中间
@@ -84,7 +79,6 @@ export default class SlideButton extends React.Component {
             }
             //否则宽每次加上该项的宽
             width += items[index].clientWidth;
-            console.log(items[index].clientWidth)
             return true;
         })
 
@@ -110,14 +104,14 @@ export default class SlideButton extends React.Component {
 
 
     render() {
+        const { match } = this.props;
         return (
             <div className="slide-button" ref={this.viewport}>
                 <nav ref={this.scroll}>
                     <ul ref={this.container}>
-                    {console.log(this.props.match)}
                         {
                             this.props.navList.map((item, key) => (
-                                <li key={key} onClick={this.handlerItemClick.bind(this, key)}><NavLink to={`${this.props.match.url}${item.path}`} activeClassName="active">{item.title}</NavLink></li>
+                                <li key={key} onClick={this.handlerItemClick.bind(this, key)}><NavLink to={`${match.url}${item.path}`} activeClassName="active">{item.title}</NavLink></li>
                             ))
                         }
                     </ul>
@@ -130,3 +124,5 @@ export default class SlideButton extends React.Component {
     
 
 }
+
+export default SlideButton = withRouter(SlideButton)

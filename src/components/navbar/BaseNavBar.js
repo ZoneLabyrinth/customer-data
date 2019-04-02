@@ -33,9 +33,9 @@ function collectMenu(_this) {
         >
             <div style={{
                 height: '100%',
-                padding: '0 15px',
+                padding: '0 0 0 15px',
                 display: 'flex',
-                marginRight: '-15px',
+                marginRight: '10px',
                 alignItems: 'center'
             }}
             >
@@ -143,15 +143,15 @@ export default class BaseNavBar extends React.Component {
 
                 <Switch>
                     {
-                        router.map((route, key) => {
+                        router.map((route, index) => {
                             if (route.exact) {
-                                return <Route key={key} exact path={route.path}
+                                return <Route key={index} exact path={route.path}
                                     render={props => (
                                         <route.component {...props} routes={route.routes} />
                                     )}
                                 />
                             } else {
-                                return <Route key={key} path={route.path}
+                                return <Route key={index} path={route.path}
                                     render={props => (
                                         <route.component {...props} routes={route.routes} />
                                     )}

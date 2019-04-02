@@ -1,5 +1,6 @@
 import React from 'react';
 import SlideButton from '../../../components/slideButton/SlideButton';
+import './info.less'
 
 import { Route ,Redirect,Switch} from 'react-router-dom'
 const navList = [
@@ -18,27 +19,29 @@ export default class Exclusive extends React.Component {
     render() {
         return (
             <div>
-                <SlideButton navList={navList} match={this.props.match}/>
-                <Switch>
-                    {
-                        this.props.routes.map((route, key) => {
-                            if (route.exact) {
-                                return <Route key={key} exact path={route.path}
-                                    render={props => (
-                                        <route.component {...props} routes={route.routes} />
-                                    )}
-                                />
-                            } else {
-                                return <Route key={key} path={route.path}
-                                    render={props => (
-                                        <route.component {...props} routes={route.routes} />
-                                    )}
-                                />
-                            }
-                        })
-                    }
-                    <Redirect to='/info/exclusive/basic'/>
-                </Switch>
+                <SlideButton navList={navList}/>
+                <div className="container-body">
+                    <Switch>
+                        {
+                            this.props.routes.map((route, key) => {
+                                if (route.exact) {
+                                    return <Route key={key} exact path={route.path}
+                                        render={props => (
+                                            <route.component {...props} routes={route.routes} />
+                                        )}
+                                    />
+                                } else {
+                                    return <Route key={key} path={route.path}
+                                        render={props => (
+                                            <route.component {...props} routes={route.routes} />
+                                        )}
+                                    />
+                                }
+                            })
+                        }
+                        <Redirect to='/info/exclusive/basic'/>
+                    </Switch>
+                </div>
 
             </div>
         )

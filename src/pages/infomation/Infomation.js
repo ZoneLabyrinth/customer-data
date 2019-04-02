@@ -33,7 +33,6 @@ export default class Information extends React.Component {
                             }
                         })
                     }
-                {/* <Redirect path='/info/exclusive' to='/info/exclusive/basic'/> */}
 
             </div>
         )
