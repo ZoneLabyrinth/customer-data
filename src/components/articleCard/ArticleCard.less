@@ -1,0 +1,45 @@
+@import '../../styles/mixin.less';
+
+
+.article-container {
+    margin: 13px 43px;
+    position: relative;
+    padding: 22px 0;
+    cursor: pointer;
+    &::after{
+        .setBottomLine()
+    }
+
+
+    .title {
+        .flex(@justify:space-between);
+        height: 40px;
+        
+        p {
+            font-size: 30px;
+            font-weight: bold;
+            .ellipsis();
+
+            i {
+                color:#5CC3F1;
+                font-size: 26px;
+            }
+        }
+        &>p:nth-child(2){
+            i{
+                color: #CCC;
+                font-size: 28px;
+            }
+        }
+    }
+    .content{
+        margin: 10px 0;
+        font-size: 24px;
+        color: #666;
+        text-align: left;
+        line-height: 30px;
+        &::after{
+            .multi-ellipsis();
+        }
+    }
+}

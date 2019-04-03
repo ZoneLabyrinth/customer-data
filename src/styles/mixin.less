@@ -20,7 +20,7 @@
     -webkit-overflow-scrolling-: touch;
 }
 
-.setBottomLine(@c: #c7c7c7, @b: solid) {
+.setBottomLine(@c: #eee, @b: solid) {
     content         : " ";
     position        : absolute;
     left            : 0;
@@ -48,4 +48,13 @@
         background-image: url('@{url}@2x.png')
         // background-image: data-uri(@url);
     }
+}
+
+
+.multi-ellipsis{
+    content: "...";
+    background: -webkit-linear-gradient(left,transparent,#fff 55%);
+    background: -o-linear-gradient(right,transparent,#fff 55%);
+    background: -moz-linear-gradient(right,transparent,#fff 55%);
+    background: linear-gradient(right,transparent,#fff 55%);
 }
