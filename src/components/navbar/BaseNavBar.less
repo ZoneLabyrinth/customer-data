@@ -39,23 +39,27 @@
         .am-popover-item-container {
             height    : 82px;
             text-align: center;
-            .am-popover-item-content{
-                width: 100%;
+
+            .am-popover-item-content {
+                width     : 100%;
                 text-align: left;
-                a{
+
+                a {
                     color: inherit;
                     // i{
                     //     font-size: 30px;
-                    //     margin: auto 30px;
+                    //     margin   : auto 30px;
                     // }
                 }
 
             }
-            .am-popover-item-icon{
-                width: 26px;
+
+            .am-popover-item-icon {
+                width : 26px;
                 height: 26px;
                 margin: auto 30px;
-                i{
+
+                i {
                     font-size: 30px;
                 }
             }
@@ -71,20 +75,25 @@
         background: #000;
     }
 }
+
 //搜索框样式
 .am-search {
     position  : absolute;
     width     : 90%;
     height    : 80px;
     background: #fff;
-    left: 17px;
+    left      : 17px;
     // z-index: 1;
+    .am-search-input .am-search-clear{
+        padding: 20px;
+        background-size: 30px;
+    }
 }
 
 .am-search-input {
-    height: 60px;
+    height       : 60px;
     border-radius: 15px;
-    background: rgba(51, 51, 51, 0.05);
+    background   : rgba(51, 51, 51, 0.05);
 
     .am-search-synthetic-ph {
         height: 60px;
@@ -103,37 +112,50 @@
 }
 
 .am-search-input input[type=search] {
-    height: 60px;
-    font-size: 25px;
-    padding-left: 50px!important;
+    height      : 60px;
+    font-size   : 25px;
+    padding-left: 50px !important;
 }
-.am-search-cancel{
+
+.am-search-cancel {
     font-size: 28px;
 }
 
 
 //搜索列表
-.search-body{
-    .flex(@justify:flex-start,@dir:column);
-    position: absolute;
-    background: white;
-    z-index: 99;
-    min-height: 645px;
-    width: 100%;
-    .search-list{
-        position: relative;
-        width: 691px;
-        font-size: 30px;
-        height: 99px;
-        line-height: 99px;
-        .flex(@justify:space-between,@align:flex-start,@dir:row);
-        &::after{
-            .setBottomLine()
-        }
-        i{
-            width: 66px;
-            height: 64px;
-            font-size: 32px;
+.search-container {
+    position  : absolute;
+    z-index   : 99;
+    width     : 100%;
+    background: #F0F0F0;
+    height    : 100%;
+    overflow: auto;
+
+
+    .search-body {
+        .flex(@justify: flex-start, @dir: column);
+        background    : white;
+        min-height    : 645px;
+        width         : 100%;
+
+        .search-list {
+            position      : relative;
+            width         : 691px;
+            font-size     : 30px;
+            height        : 99px;
+            line-height   : 99px;
+            .flex(@justify: space-between, @align: flex-start, @dir: row);
+
+            &::after {
+                .setBottomLine()
+            }
+
+            i {
+                width    : 66px;
+                height   : 64px;
+                font-size: 32px;
+            }
         }
     }
+
 }

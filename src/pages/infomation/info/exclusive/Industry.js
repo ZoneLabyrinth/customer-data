@@ -50,17 +50,13 @@ const content = [
 export default class Industry extends React.Component {
     render() {
         return (
-            <div>
+            <div className="industry">
                 <CardTabs
                     indent
                     tabs={tabs}
                     left={article(content)}
                     center={<BaseList titleList={title} dataList={data} />}
                     right={<BaseList titleList={title} dataList={data} />}
-
-
-
-
                 />
             </div>
         )

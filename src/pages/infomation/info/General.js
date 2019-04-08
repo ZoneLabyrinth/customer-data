@@ -4,13 +4,11 @@ import './info.less'
 
 import { Route ,Redirect,Switch} from 'react-router-dom'
 const navList = [
-    { title: '基本情况', path: '/basic' },
-    { title: '指名报备', path: '/marks' },
-    { title: '经营关系', path: '/management' },
-    { title: '历史交易', path: '/history' },
-    { title: '行业信息', path: '/industry' },
-    { title: '舆情信息', path: '/sentiment' },
-    { title: '关系查询', path: '/relation' },
+    { title: '赢单策略', path: '/strategy' },
+    { title: '机构分享', path: '/shareOrg' },
+    { title: '产品演示', path: '/production' },
+    { title: '公司动态', path: '/dynamic' },
+    { title: '管理查询', path: '/managementSearch' }
 ]
 
 
@@ -39,7 +37,7 @@ export default class General extends React.Component {
                                 }
                             })
                         }
-                        <Redirect to='/info/general/basic'/>
+                        <Redirect to='/info/general/strategy'/>
                     </Switch>
                 </div>
 

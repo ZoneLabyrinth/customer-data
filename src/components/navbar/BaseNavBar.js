@@ -1,8 +1,9 @@
 import React from 'react'
 import { WhiteSpace, NavBar, Icon, Popover, SearchBar } from 'antd-mobile';
-import { Route, Switch,Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import './BaseNavBar.less'
 import router from '../../router/index';
+import Api from '@/api/api'
 
 const Item = Popover.Item;
 const myIcon = icon => <i className={`iconfont ${icon}`}></i>;
@@ -45,53 +46,10 @@ function collectMenu(_this) {
     )
 }
 
-
-//搜索列表
-function searchList(_this) {
-    return (
-        <div>
-            <WhiteSpace size="lg" />
-            <div className="search-body">
-                <div className="search-list">
-                    <span>北京同仁堂</span>
-                    <span><i className={`${_this.state.star ? 'icon-start' : ''} 'iconfont'`}></i></span>
-                </div>
-                <div className="search-list">
-                    <span>北京同仁堂</span>
-                    <span><i className={`${_this.state.stars ? 'icon-star1' : null} 'iconfont'`}></i></span>
-                </div>
-                <div className="search-list">
-                    <span>北京同仁堂</span>
-                    <span><i className="iconfont icon-star"></i></span>
-                </div>
-            </div>
-        </div>
-    )
-}
-
-//搜索按钮
-function searchButton(_this) {
-    return (
-        <SearchBar
-            value={_this.state.value}
-            placeholder="搜索"
-            onSubmit={value => console.log(value, 'onSubmit')}
-            onClear={value => console.log(value, 'onClear')}
-            onFocus={() => console.log('onFocus')}
-            onBlur={() => console.log('onBlur')}
-            onCancel={() => _this.setState({ cancle: !_this.state.cancle })}
-            showCancelButton
-            onChange={_this.onChange}
-        />
-    )
-}
-
-
-
-export default class BaseNavBar extends React.Component {
+class BaseNavBar extends React.Component {
     state = {
-        cancle: false,
-        value: '',
+        cancle: false, // 搜索框
+        data: [],
         visible: false,
         selected: '',
         star: false,
@@ -102,9 +60,12 @@ export default class BaseNavBar extends React.Component {
     }
 
     //搜索事件
+    handlerSearch(item) {
+        this.props.history.push(`/info/exclusive/basic?customer=${item}`)
+        this.setState({ cancle: false })
+        
 
-
-
+    }
     // 菜单事件
     onSelect = (opt) => {
         // console.log(opt.props.value);
@@ -118,8 +79,13 @@ export default class BaseNavBar extends React.Component {
             visible,
         });
     };
-    onChange = (value) => {
+
+    onChange = async (value) => {
         this.setState({ value });
+        let data = await Api.search(value);
+        this.setState({
+            data: data.data
+        })
     };
 
 
@@ -135,11 +101,42 @@ export default class BaseNavBar extends React.Component {
                     ]}
                 >
 
-                    {this.state.cancle ? searchButton(this) : null}
+                    {this.state.cancle &&
+                        <SearchBar
+                            value={this.state.value}
+                            placeholder="搜索"
+                            onSubmit={value => console.log(value, 'onSubmit')}
+                            onClear={value => console.log(value, 'onClear')}
+                            onFocus={() => console.log('onFocus')}
+                            onBlur={() => console.log('onBlur')}
+                            onCancel={() => this.setState({ cancle: !this.state.cancle })}
+                            showCancelButton
+                            onChange={this.onChange}
+                        />
+
+                    }
                     北京同仁堂
                 </NavBar>
                 <WhiteSpace size="sm" />
-                {this.state.cancle ? searchList(this) : null}
+                {this.state.cancle &&
+                    <div className="search-container">
+                        <WhiteSpace size="lg" />
+                        <div className="search-body">
+                            {
+                                this.state.data &&
+                                this.state.data.map((item, index) => {
+                                    return (
+                                        <div className="search-list" key={index} onClick={this.handlerSearch.bind(this, item)}>
+                                            <span>{item}</span>
+                                            <span><i className={`iconfont ${this.state.star ? 'icon-star1' : 'icon-star'}`}></i></span>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                    </div>
+
+                }
 
                 <Switch>
                     {
@@ -159,11 +156,11 @@ export default class BaseNavBar extends React.Component {
                             }
                         })
                     }
-                    <Redirect from='/' to='/info/exclusive'/>
+                    <Redirect from='/' to='/info/exclusive' />
                 </Switch>
             </div>
         );
     }
 }
 
-
+export default BaseNavBar = withRouter(BaseNavBar)

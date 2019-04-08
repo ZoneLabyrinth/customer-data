@@ -12,6 +12,7 @@ const tabs = [
   { title: '通用信息', path: '/common' }
 ];
 
+
 class App extends Component {
 
   render() {
@@ -19,12 +20,6 @@ class App extends Component {
       <Router>
         <div className="App">
             <BaseNavBar/>
-            {/* <Switch>
-
-                    <Route path='/'  component={Information}/>  
-                    <Route path='/collect' component={Collect} />
-
-            </Switch> */}
         </div>
       </Router>
     );

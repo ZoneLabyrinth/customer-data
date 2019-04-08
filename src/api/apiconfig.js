@@ -1,4 +1,4 @@
 
 export const apiurl = {
-    getName:'/apimasv2/common/query/all'
+    getName:'/api/v1/serrchcustomername'
 }

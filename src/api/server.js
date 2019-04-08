@@ -17,7 +17,7 @@ export default class server {
                 parmas: null,
                 data: null,
                 timeout: 5000,
-                withCredentials: true,
+                // withCredentials: true,
                 validateStatus: (status) => {
                     return status >= 200 && status <= 300;
                 },
