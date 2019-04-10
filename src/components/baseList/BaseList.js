@@ -51,9 +51,8 @@ export default class Reactclass extends React.Component {
                         </li>}
                     {dataList.length > 0 && dataList.map((items, index) => (
                         <li key={index}>
-                            {items.map((item, index) => (
-                                titleList[index] &&
-                                <span key={index}>{item[titleList[index].code]}</span>
+                            {titleList.map((item, index) => (
+                                <span key={index}>{items[item.code]}</span>
                             ))}
                         </li>
                     ))}

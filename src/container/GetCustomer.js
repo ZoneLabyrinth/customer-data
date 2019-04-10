@@ -22,7 +22,7 @@ const mapStateToProps = state => ({
 const mapDispatchProps = (dispatch, { history,hanlderCancle }) => ({
     onSearchClick: (customer) => {
         dispatch(curCustomer(customer))
-        history.push(`/info/exclusive/basic?customer=${customer}`)
+        history.push(`/info/exclusive/basic?customer=${customer.name}&customerId=${customer.id}`)
         //取消显示搜索列表
         hanlderCancle();
     }

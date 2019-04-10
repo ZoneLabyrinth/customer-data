@@ -6,18 +6,17 @@ import { getQueryString } from './utils/utils';
 import { connect } from 'react-redux';
 import { curCustomer } from './store/actions';
 
-const tabs = [
-  { title: '专属信息', path: '/specail' },
-  { title: '通用信息', path: '/common' }
-];
-
-
 class App extends Component {
 
-  componentDidMount(){
-    let name = getQueryString('customer')
-    if(name){
-        this.props.dispatch(curCustomer(name))
+  componentDidMount() {
+    let name = getQueryString('customer');
+    let id = getQueryString('customerId')
+    console.log(name,id)
+    if (name && id) {
+      this.props.dispatch(curCustomer({
+        name,
+        id
+      }));
     }
   }
 
@@ -26,7 +25,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-            <BaseNavBar/>
+          <BaseNavBar />
         </div>
       </Router>
     );

@@ -8,8 +8,9 @@ const Item = List.Item;
 
 export default class BaseCard extends React.Component {
     static propTypes = {
-        data: PropTypes.array.isRequired,
-        active: PropTypes.bool
+        titles: PropTypes.array.isRequired,
+        active: PropTypes.bool,
+        data:PropTypes.object
     }
 
     render() {
@@ -17,14 +18,14 @@ export default class BaseCard extends React.Component {
             // <CardContainer>
                 <List>
                     {
-                        this.props.data.map((item,index)=>{
-                            if (index === 0){
-                                return (<Item key={index} extra={<span style={{color:this.props.active?"#E14C46":""}}>{item.value}</span>}>
+                        this.props.titles.map((item,index)=>{
+                            if (index === 0){ 
+                                return (<Item key={index} extra={<span style={{color:this.props.active?"#E14C46":""}}>{this.props.data[item.code]}</span>}>
                                     {item.title}
                                 </Item>)
                             }else{
                                 return (
-                                    <Item key={index} extra={item.value}>
+                                    <Item key={index} extra={this.props.data[item.code]?this.props.data[item.code]:'--'}>
                                         {item.title}
                                     </Item>)
                             }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { WhiteSpace, NavBar, Icon, Popover, SearchBar } from 'antd-mobile';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect,withRouter } from 'react-router-dom';
 import './BaseNavBar.less'
 import router from '../../router/index';
 import Api from '@/api/api'
@@ -20,13 +20,14 @@ function collectMenu(_this) {
             overlayClassName="fortest"
             overlayStyle={{ color: 'currentColor' }}
             visible={_this.state.visible}
-            overlay={[
-                (<Item key="8" value="scan" icon={myIcon('icon-star')}><a href='/collection/collect'>客户收藏</a></Item>),
-                (<Item key="9" value="special" icon={myIcon('icon-yijianfankui')}><a href='/collection/feedback'>意见反馈</a></Item>),
-                (<Item key="10" value="button ct" icon={myIcon('icon-fenxiang')}>
-                    <a href='/collection/share'>机构分享</a>
+            overlay={
+                [
+                    (<Item key="0" value="/collection/collect" icon={myIcon('icon-star')}>客户收藏</Item>),
+                    (<Item key="1" value="/collection/feedback" icon={myIcon('icon-yijianfankui')}>意见反馈</Item>),
+                    (<Item key="2" value="/collection/share" icon={myIcon('icon-fenxiang')}>
+                        机构分享
                 </Item>),
-            ]
+                ]
             }
             align={{
                 overflow: { adjustY: 0, adjustX: 0 },
@@ -50,8 +51,8 @@ function collectMenu(_this) {
     )
 }
 //获取客户名称用于标题
-const mapStateToProps = state =>({
-    customer:state.customer
+const mapStateToProps = state => ({
+    customer: state.customer
 })
 
 
@@ -73,6 +74,8 @@ class BaseNavBar extends React.Component {
             visible: false,
             selected: opt.props.value,
         });
+        
+        this.props.history.push(opt.props.value)
     };
     handleVisibleChange = (visible) => {
         this.setState({
@@ -80,9 +83,9 @@ class BaseNavBar extends React.Component {
         });
     };
 
-    onChange = debounce((e) =>{
+    onChange = debounce((e) => {
         this.getData()
-    },1000)
+    }, 1000)
 
 
     getData = async (value) => {
@@ -94,7 +97,7 @@ class BaseNavBar extends React.Component {
 
     hanlderCancle() {
         this.setState({
-            value:'',
+            value: '',
             cancle: !this.state.cancle
         })
     }
@@ -121,15 +124,15 @@ class BaseNavBar extends React.Component {
                             onFocus={() => console.log('onFocus')}
                             onCancel={() => this.setState({ cancle: !this.state.cancle })}
                             showCancelButton
-                            onChange={(value)=>{
-                                this.setState({value});
+                            onChange={(value) => {
+                                this.setState({ value });
                                 this.onChange()
-                            } }
+                            }}
                         />
 
                     }
 
-                    {this.props.customer}
+                    {this.props.customer.name}
                 </NavBar>
                 <WhiteSpace size="sm" />
                 {this.state.cancle &&
@@ -168,4 +171,4 @@ class BaseNavBar extends React.Component {
     }
 }
 
-export default BaseNavBar = connect(mapStateToProps)(BaseNavBar)
+export default  withRouter(connect(mapStateToProps)(BaseNavBar))

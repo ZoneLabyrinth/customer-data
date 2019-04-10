@@ -14,7 +14,6 @@ export default class Collect extends React.Component{
         return(
             <div>
                 <BaseTabBar tabs={tabs} routes={this.props.routes}/>
-            
             </div>
         )
     }

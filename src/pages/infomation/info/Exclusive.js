@@ -2,7 +2,7 @@ import React from 'react';
 import SlideButton from '../../../components/slideButton/SlideButton';
 import './info.less'
 
-import { Route ,Redirect,Switch} from 'react-router-dom'
+import { Route, Redirect, Switch } from 'react-router-dom'
 const navList = [
     { title: '基本情况', path: '/basic' },
     { title: '指名报备', path: '/marks' },
@@ -19,7 +19,7 @@ export default class Exclusive extends React.Component {
     render() {
         return (
             <div>
-                <SlideButton navList={navList}/>
+                <SlideButton navList={navList} />
                 <div className="container-body">
                     <Switch>
                         {
@@ -39,7 +39,7 @@ export default class Exclusive extends React.Component {
                                 }
                             })
                         }
-                        <Redirect to='/info/exclusive/basic'/>
+                        <Redirect to='/info/exclusive/basic' />
                     </Switch>
                 </div>
 

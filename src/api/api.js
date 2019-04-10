@@ -8,7 +8,16 @@ class Api extends server{
         return result;
     }
     async getCustomerInfo(params){
-        let result = await this.axios('get',`${apiurl.getCustomerInfo}/${params}`)
+        let result = await this.axios('post',`${apiurl.getCustomerInfo}/${params}`)
+        return result
+    }
+    async getMarksInfo(params){
+        let result = await this.axios('post',`${apiurl.getMarksInfo}/${params}`)
+        return result
+    }
+    async getManageInfo(params){
+        let result = await this.axios('post',`${apiurl.getManageInfo}/${params}`)
+
         return result
     }
 }

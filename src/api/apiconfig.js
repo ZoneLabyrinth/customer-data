@@ -1,5 +1,7 @@
 
 export const apiurl = {
     getName:'/serrchcustomername',
-    getCustomerInfo:'/customer'
+    getCustomerInfo:'/customer',
+    getMarksInfo:'/namedcustomerbycustomer',
+    getManageInfo: '/relation'
 }

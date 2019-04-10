@@ -27,8 +27,6 @@ export default class BaseTabBar extends React.Component {
                     </Tabs>
                 </StickyContainer>
                 <WhiteSpace />
-
-
             </div>
         )
     }

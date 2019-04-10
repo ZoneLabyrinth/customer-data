@@ -36,7 +36,9 @@ class SlideButton extends React.Component {
             const index = this.props.navList.findIndex(item => 
                 url.indexOf(item.path)!== -1
             )
-            this.adjust(index);
+            if(index !==-1){
+                this.adjust(index);
+            }
         },0)
     }
 
