@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import BaseNavBar from './components/navbar/BaseNavBar'
-import Api from '@/api/api'
-import { BrowserRouter as Router, Switch, Route, Redirect, Link } from 'react-router-dom'
-import router from './router/index';
-import Information from './pages/infomation/Infomation';
-import Collect from './pages/collect/Collect';
+import { BrowserRouter as Router } from 'react-router-dom'
+import { getQueryString } from './utils/utils';
+import { connect } from 'react-redux';
+import { curCustomer } from './store/actions';
 
 const tabs = [
   { title: '专属信息', path: '/specail' },
@@ -14,6 +13,14 @@ const tabs = [
 
 
 class App extends Component {
+
+  componentDidMount(){
+    let name = getQueryString('customer')
+    if(name){
+        this.props.dispatch(curCustomer(name))
+    }
+  }
+
 
   render() {
     return (
@@ -26,4 +33,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App = connect()(App)

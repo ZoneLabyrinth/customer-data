@@ -1,0 +1,4 @@
+export const CUSTOMER_LIST = 'CUSTOMER_LIST'
+
+
+export const CUR_CUSTOMER = 'CUR_CUSTOMER'

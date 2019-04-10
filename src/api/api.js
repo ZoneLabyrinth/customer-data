@@ -7,6 +7,10 @@ class Api extends server{
         let result = await this.axios('get',`${apiurl.getName}?part_name=${params}`)
         return result;
     }
+    async getCustomerInfo(params){
+        let result = await this.axios('get',`${apiurl.getCustomerInfo}/${params}`)
+        return result
+    }
 }
 
 

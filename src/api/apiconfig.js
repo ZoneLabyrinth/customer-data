@@ -1,4 +1,5 @@
 
 export const apiurl = {
-    getName:'/api/v1/serrchcustomername'
+    getName:'/serrchcustomername',
+    getCustomerInfo:'/customer'
 }

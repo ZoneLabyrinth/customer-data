@@ -6,13 +6,15 @@ import FastClick from 'fastclick'
 import { Provider } from 'react-redux'
 import './styles/reset.css'
 import App from './App';
-
+import store from './store';
 
 
 FastClick.attach(document.body)
 
 
-ReactDOM.render(<App/>
+ReactDOM.render(<Provider store={store}> 
+    <App/>
+</Provider>
     , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

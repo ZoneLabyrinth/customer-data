@@ -1,9 +1,13 @@
 import React from 'react'
 import { WhiteSpace, NavBar, Icon, Popover, SearchBar } from 'antd-mobile';
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import './BaseNavBar.less'
 import router from '../../router/index';
 import Api from '@/api/api'
+import GetCustomer from '../../container/GetCustomer';
+import { connect } from 'react-redux';
+import { customerList } from '../../store/actions';
+import { debounce } from '../../utils/utils';
 
 const Item = Popover.Item;
 const myIcon = icon => <i className={`iconfont ${icon}`}></i>;
@@ -45,6 +49,11 @@ function collectMenu(_this) {
         </Popover>
     )
 }
+//获取客户名称用于标题
+const mapStateToProps = state =>({
+    customer:state.customer
+})
+
 
 class BaseNavBar extends React.Component {
     state = {
@@ -59,16 +68,7 @@ class BaseNavBar extends React.Component {
         this.setState({ cancle: !this.state.cancle })
     }
 
-    //搜索事件
-    handlerSearch(item) {
-        this.props.history.push(`/info/exclusive/basic?customer=${item}`)
-        this.setState({ cancle: false })
-        
-
-    }
-    // 菜单事件
     onSelect = (opt) => {
-        // console.log(opt.props.value);
         this.setState({
             visible: false,
             selected: opt.props.value,
@@ -80,13 +80,24 @@ class BaseNavBar extends React.Component {
         });
     };
 
-    onChange = async (value) => {
-        this.setState({ value });
-        let data = await Api.search(value);
-        this.setState({
-            data: data.data
-        })
+    onChange = debounce((e) =>{
+        this.getData()
+    },1000)
+
+
+    getData = async (value) => {
+        let data = await Api.search(this.state.value);
+        if (Array.isArray(data.data)) {
+            this.props.dispatch(customerList(data.data));
+        }
     };
+
+    hanlderCancle() {
+        this.setState({
+            value:'',
+            cancle: !this.state.cancle
+        })
+    }
 
 
     render() {
@@ -108,31 +119,25 @@ class BaseNavBar extends React.Component {
                             onSubmit={value => console.log(value, 'onSubmit')}
                             onClear={value => console.log(value, 'onClear')}
                             onFocus={() => console.log('onFocus')}
-                            onBlur={() => console.log('onBlur')}
                             onCancel={() => this.setState({ cancle: !this.state.cancle })}
                             showCancelButton
-                            onChange={this.onChange}
+                            onChange={(value)=>{
+                                this.setState({value});
+                                this.onChange()
+                            } }
                         />
 
                     }
-                    北京同仁堂
+
+                    {this.props.customer}
                 </NavBar>
                 <WhiteSpace size="sm" />
                 {this.state.cancle &&
                     <div className="search-container">
                         <WhiteSpace size="lg" />
                         <div className="search-body">
-                            {
-                                this.state.data &&
-                                this.state.data.map((item, index) => {
-                                    return (
-                                        <div className="search-list" key={index} onClick={this.handlerSearch.bind(this, item)}>
-                                            <span>{item}</span>
-                                            <span><i className={`iconfont ${this.state.star ? 'icon-star1' : 'icon-star'}`}></i></span>
-                                        </div>
-                                    )
-                                })
-                            }
+                            {/* 传入子组件 */}
+                            <GetCustomer hanlderCancle={this.hanlderCancle.bind(this)} />
                         </div>
                     </div>
 
@@ -163,4 +168,4 @@ class BaseNavBar extends React.Component {
     }
 }
 
-export default BaseNavBar = withRouter(BaseNavBar)
+export default BaseNavBar = connect(mapStateToProps)(BaseNavBar)
