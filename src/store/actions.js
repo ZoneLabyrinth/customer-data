@@ -9,3 +9,9 @@ export const curCustomer = (customer) =>({
     type:actionTypes.CUR_CUSTOMER,
     customer
 })
+
+
+export const textData = (text) =>({
+    type:actionTypes.TEXT_DATA,
+    text
+})

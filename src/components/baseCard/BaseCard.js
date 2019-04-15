@@ -15,7 +15,6 @@ export default class BaseCard extends React.Component {
 
     render() {
         return (
-            // <CardContainer>
                 <List>
                     {
                         this.props.titles.map((item,index)=>{
@@ -32,7 +31,6 @@ export default class BaseCard extends React.Component {
                         })
                     }
                 </List>
-            // </CardContainer>
 
         )
     }

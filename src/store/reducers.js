@@ -3,8 +3,8 @@ import * as types from './actionTypes'
 
 const initailState = {
     customer:"",
-    list:[]
-    
+    list:[],
+    text:{}
 }
 
 
@@ -17,6 +17,10 @@ export const customer = (state = initailState,action) =>{
         case types.CUSTOMER_LIST:
             return Object.assign({},state,{
                 list:action.list
+            })
+        case types.TEXT_DATA:
+            return Object.assign({},state,{
+                text:action.text
             })
         default:
             return state

@@ -34,13 +34,13 @@ class Management extends React.Component {
 
     getData = async () => {
         let customerId = this.props.customer.id
-        // if (customerId){
-        let result = await Api.getManageInfo(133646)
-        console.log(result)
+        if (customerId){
+        let result = await Api.getManageInfo(customerId)
+        // console.log(result)
         this.setState({
             data: result.data
         })
-        // }
+        }
     }
 
 

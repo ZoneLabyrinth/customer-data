@@ -1,17 +1,19 @@
 import React from 'react'
 import {Button, WhiteSpace} from 'antd-mobile'
 import BaseList from '@/components/baseList/BaseList'
-import CardContainer from '../../../../components/cardContainer/CardContainer';
+import CardContainer from '@/components/cardContainer/CardContainer';
 
 
 
-const title =[
+const titles =[
     {name:'客户名称',code:'cust'},
     {name:'股权关系', code:'rela'},
     {name:'关系级次', code:'cengji'},
     {name:'经营机构', code:'jingying'},
-    {name:'经营机构', code:'jigou'},
-    {name:'经营机构', code:'mingcheng'},
+    {name:'客户类型', code:'jigou'},
+    {name:'签约数量', code:'mingcheng'},
+    {name:'签约产品线', code:'mingcheng'},
+    {name:'签约模组', code:'mingcheng'},
 
 ]
 const data =[
@@ -48,7 +50,7 @@ export default class Relation extends React.Component{
                 </CardContainer>
 
                 <CardContainer style={{padding:0}}>
-                    <BaseList titleList={title} dataList={data} />
+                    <BaseList titleList={titles} dataList={data} />
 
 
 

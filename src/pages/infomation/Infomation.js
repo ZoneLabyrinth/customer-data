@@ -1,6 +1,6 @@
 import React from 'react';
 import BaseTabBar from '../../components/tabbar/BaseTabBar';
-import {Route,Redirect } from 'react-router-dom'
+import {Route } from 'react-router-dom'
 
 const tabs = [
     { title: '专属信息', path: '/info/exclusive' },
