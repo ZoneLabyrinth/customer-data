@@ -3,6 +3,8 @@ import CardContainer from '../../../../components/cardContainer/CardContainer';
 import BaseCard from '../../../../components/baseCard/BaseCard';
 import CardTabs from '../../../../components/cardTabs/CardTabs';
 import ArticleCard from '@/components/articleCard/ArticleCard'
+import { connect } from 'react-redux';
+import Api from '@/api/api';
 
 //标签标题
 const tabs = [
@@ -12,48 +14,87 @@ const tabs = [
 ];
 
 // 标签页内容
-const data = [
-    { title: '董事长', value: '北京同仁堂' },
-    { title: '总经理', value: '' },
-    { title: '副总经理', value: '' },
-    { title: '总收入', value: '' },
-    { title: '净利润', value: '' },
-    { title: '收入增长率', value: '' },
-    { title: '利润增长率', value: '' },
-    {title:'收入构成',value:''},
-    {title:'毛利率',value:''},
-    {title:'净利率',value:''},
-    {title:'负债率',value:''},
-    {title:'经营评述',value:''},
+const titles = [
+    { title: '董事长', code: 'chainman' },
+    { title: '总经理', code: 'todo' },
+    { title: '副总经理', code: 'todo' },
+    { title: '总收入', code: 'all_income' },
+    { title: '净利润', code: 'net_profit' },
+    { title: '收入增长率', code: 'all_income_growth' },
+    { title: '利润增长率', code: 'gross_profit_growth' },
+    { title: '收入构成', code: 'todo' },
+    { title: '毛利率', code: 'margin_rate' },
+    { title: '净利率', code: 'net_rate' },
+    { title: '负债率', code: 'Asset_rate' },
+    { title: '经营评述', code: 'todo' },
+    { title: '官网', code: 'website' },
+    { title: '联系电话', code: 'telephone' },
+    { title: '邮箱', code: 'email' },
+
 ]
 
 
-function article(data) {
+function article(data, code) {
     return (
-        data.map((item, index) => <ArticleCard key={index} data={item} />)
+        <div>
+            {
+                data.map((item, index) => <ArticleCard key={index} code={code} style={{ margin: '0' }} data={item} />)
+            }
+        </div>
     )
 }
 
-const content = [
-    { title: 'XXXXX药品公司ERP投标文件', content: '正规的招标书中会要求对标书的技术规范要求进行逐条应答，海域一些对招标项目的解释和澄清，所有这些内容都应逐条详细阅读并作出赢啊，因为用户的需求是完全从招标书中体现的，是否能真正把我用户需求连接清楚，标书是最直接的途径' },
-    { title: 'XXXXX药品公司ERP投标文件', content: '正规的招标书中会要求对标书的技术规范要求进行逐条应答，海域一些对招标项目的解释和澄清，所有这些内容都应逐条详细阅读并作出赢啊，因为用户的需求是完全从招标书中体现的，是否能真正把我用户需求连接清楚，标书是最直接的途径' },
-    { title: 'XXXXX药品公司ERP投标文件', content: '正规的招标书中会要求对标书的技术规范要求进行逐条应答，海域一些对招标项目的解释和澄清，所有这些内容都应逐条详细阅读并作出赢啊，因为用户的需求是完全从招标书中体现的，是否能真正把我用户需求连接清楚，标书是最直接的途径' },
-    { title: 'XXXXX药品公司ERP投标文件', content: '正规的招标书中会要求对标书的技术规范要求进行逐条应答，海域一些对招标项目的解释和澄清，所有这些内容都应逐条详细阅读并作出赢啊，因为用户的需求是完全从招标书中体现的，是否能真正把我用户需求连接清楚，标书是最直接的途径' }
-]
+
+const mapStateToProps = state => (
+    { customer: state.customer }
+)
 
 
-export default class Sentiment extends React.Component{
-    render(){
-        return(
+class Sentiment extends React.Component {
+
+    state = {
+        info: {},
+        customerNews: [],
+        industryNews:[]
+    }
+
+    componentDidMount() {
+        this.getData();
+    }
+
+    getData = async () => {
+        let id = this.props.customer.id
+
+        let info = await Api.getSentimentInfo(id)
+
+        let customerNews = await Api.getSentimentCustomer(id)
+
+        let industryNews = await Api.getSentimentIndustry(id)
+
+        this.setState({
+            info,
+            customerNews,
+            industryNews
+        })
+
+    }
+
+    render() {
+        const customCode = { title: 'customer_name', content: 'news_summary' }
+        const industryCode = { title: 'industry_name', content: 'news_summary' }
+
+        return (
             <div>
-                    <CardTabs
-                        tabs={tabs}
-                        left={<BaseCard data={data} />}
-                        center={article(content)}
-                        right={article(content)}
-                    />
-                
+                <CardTabs
+                    tabs={tabs}
+                    left={<BaseCard data={this.state.info} titles={titles} />}
+                    center={article(this.state.customerNews, customCode)}
+                    right={article(this.state.industryNews, industryCode)}
+                />
+
             </div>
         )
     }
 }
+
+export default connect(mapStateToProps)(Sentiment)

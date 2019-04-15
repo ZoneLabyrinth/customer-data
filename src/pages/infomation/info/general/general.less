@@ -131,3 +131,83 @@
         }
     }
 }
+
+
+
+
+
+//shareOrg
+.shareOrg-container{
+    .title-container{
+        margin: 30px 0;
+        .flex(@dir:column,@align:flex-start);
+        &>div{
+            width: 100%;
+            margin: 15px auto;
+            .flex(@justify:flex-start);
+            span{
+                flex:1;
+            }
+            .am-list-item{
+                height: 30px;
+            }
+
+            .am-list-content{
+                color: #000000;
+                text-align: center;
+            }
+            .am-list-extra{
+                color: #000000;
+                text-align: center;
+            }
+        }
+    }
+    .content-container{
+        margin: 48px 50px;
+        text-align: left;
+        h2{
+            font-size: 30px;
+        }
+        .content-body{
+            padding: 48px 0 31px 0;
+            font-size: 24px;
+            color: #666;
+            line-height: 30px;
+        }
+    }
+}
+
+
+
+
+// managementsearch
+.management-container{
+    .am-list{
+        margin: 5px;
+        .am-list-body{
+            height: 63px;
+            // line-height: 63px;
+
+        }
+        .am-input-label{
+            font-size: 24px;
+            color: #333;
+            flex:0.5;
+        }
+        .am-input-control{
+            &>input{
+                font-size: 24px;
+            }
+        }
+        .am-list-line{
+            height: 63px;
+            // line-height: 63px;
+
+        }
+    }
+    .am-button{
+        height: 73px;
+        margin: 10px 0 ;
+        font-size: 28px;
+    }
+}

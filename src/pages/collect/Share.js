@@ -5,7 +5,7 @@ export default class Share extends React.Component{
     render(){
         return(
             <div>
-                this is share
+                建设中，敬请期待~
             </div>
         )
     }

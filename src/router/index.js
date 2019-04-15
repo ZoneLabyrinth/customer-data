@@ -19,8 +19,7 @@ import ShareOrg from '@/pages/infomation/info/general/ShareOrg';
 import Production from '@/pages/infomation/info/general/Production';
 import Dynamic from '@/pages/infomation/info/general/Dynamic';
 import ManagementSearch from '@/pages/infomation/info/general/ManagementSearch';
-
-
+import Detail from '../pages/detail/bidDetail/BidDetail';
 
 
 
@@ -104,11 +103,11 @@ const router = [
         ]
 
     },
-    // {
-    //     path:'/',
-    //     component: ,
+    {
+        path:'/detail',
+        component: Detail,
 
-    // },
+    },
     // {
     //     path:'/',
     //     component: ,

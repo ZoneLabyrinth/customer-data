@@ -28,8 +28,7 @@ export default class Reactclass extends React.Component {
                 width += li.children[i].clientWidth
             }
         } else return
-        console.log(width);
-
+        // console.log(width);
         this.container.current.style.width = `${width}px`
 
     }

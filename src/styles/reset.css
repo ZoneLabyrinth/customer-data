@@ -99,3 +99,15 @@ body {
 .icon-star1 {
   color: #FFC400;
 }
+
+.am-picker-popup{
+  height: 500px;
+}
+
+.am-picker-popup-item,.am-picker-col-item,.am-picker-popup-header{
+  font-size: 30px!important;
+}
+
+.am-picker-col-indicator {
+  height: 35px!important;
+}

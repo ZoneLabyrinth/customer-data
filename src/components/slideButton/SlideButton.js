@@ -54,7 +54,7 @@ class SlideButton extends React.Component {
         let sum = 0;
         for (let i = 0; i < aLi.length; i++) {
             //每个外加左右3的margin
-            sum += (aLi[i].clientWidth + 6)
+            sum += (aLi[i].clientWidth + 2)
         }
         //加上第一个margin值
         sum += 5;

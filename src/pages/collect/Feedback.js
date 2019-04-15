@@ -5,7 +5,7 @@ export default class Feedback extends React.Component{
     render(){
         return(
             <div>
-                this is Feedback
+                建设中，敬请期待~
             </div>
         )
     }

@@ -6,7 +6,6 @@ import './CardTabs.less'
 import PropTypes from 'prop-types';
 
 function renderTabBar(props) {
-    console.log(props)
     return (<Sticky>
         {({ style }) => <div style={{ ...style, zIndex: 1 }}><Tabs.DefaultTabBar {...props} /></div>}
     </Sticky>);
@@ -23,12 +22,14 @@ export default class CardTabs extends React.Component {
         indent: PropTypes.bool,
         left: PropTypes.element.isRequired,
         center: PropTypes.element.isRequired,
-        right: PropTypes.element.isRequired
+        right: PropTypes.element.isRequired,
+        four: PropTypes.element,
+        last: PropTypes.element
     }
 
 
     render() {
-        const { left, center, right, indent, tabs } = this.props
+        const { left, center, right, indent, tabs, four, last } = this.props
         return (
             <div>
                 <CardContainer style={indent ? { padding: 0 } : null}>
@@ -37,7 +38,7 @@ export default class CardTabs extends React.Component {
                             destroyInactiveTab
                             renderTabBar={renderTabBar}
                         >
-                            <div>
+                            <div style={{overflowX:'auto'}}>
                                 {left}
                             </div>
                             <div>
@@ -46,9 +47,15 @@ export default class CardTabs extends React.Component {
                             <div>
                                 {right}
                             </div>
+                            <div>
+                                {four}
+                            </div>
+                            <div>
+                                {last}
+                            </div>
                         </Tabs>
                     </StickyContainer>
-                   
+
                 </CardContainer>
             </div>
 

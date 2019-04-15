@@ -11,7 +11,7 @@ class App extends Component {
   componentDidMount() {
     let name = getQueryString('customer');
     let id = getQueryString('customerId')
-    console.log(name,id)
+    // console.log(name,id)
     if (name && id) {
       this.props.dispatch(curCustomer({
         name,

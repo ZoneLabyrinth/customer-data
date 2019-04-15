@@ -21,3 +21,12 @@ export function debounce(fn,delay) {
 }
 
 
+
+export const formatCash = num =>{
+    if(typeof num !== 'number') return num;
+
+    return num.toLocaleString()
+
+    
+
+}
