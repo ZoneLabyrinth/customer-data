@@ -8,27 +8,27 @@ import Api from '@/api/api';
 
 //标签标题
 const tabs = [
-    { title: '经营情况' },
-    { title: '客户新闻' },
-    { title: '行业新闻' },
+    { title: '情况' },
+    { title: '新闻' },
+    { title: '舆情' },
 ];
 
 // 标签页内容
 const titles = [
-    { title: '董事长', code: 'chainman' },
-    { title: '总经理', code: 'todo' },
-    { title: '副总经理', code: 'todo' },
-    { title: '总收入', code: 'all_income' },
-    { title: '净利润', code: 'net_profit' },
-    { title: '收入增长率', code: 'all_income_growth' },
-    { title: '利润增长率', code: 'gross_profit_growth' },
-    { title: '收入构成', code: 'todo' },
-    { title: '毛利率', code: 'margin_rate' },
-    { title: '净利率', code: 'net_rate' },
-    { title: '负债率', code: 'Asset_rate' },
-    { title: '经营评述', code: 'todo' },
-    { title: '官网', code: 'website' },
-    { title: '联系电话', code: 'telephone' },
+    { title: '名称', code: 'chainman' },
+    { title: '名称2', code: 'todo' },
+    { title: '名称3', code: 'todos' },
+    { title: '收入', code: 'all_income' },
+    { title: '金额', code: 'net_profit' },
+    { title: '增长率', code: 'all_income_growth' },
+    { title: '减少率', code: 'gross_profit_growth' },
+    { title: '构成', code: 'todoss' },
+    { title: '毛', code: 'margin_rate' },
+    { title: '少', code: 'net_rate' },
+    { title: '付钱', code: 'Asset_rate' },
+    { title: '评述', code: 'todosss' },
+    { title: 'url', code: 'website' },
+    { title: '电话', code: 'telephone' },
     { title: '邮箱', code: 'email' },
 
 ]

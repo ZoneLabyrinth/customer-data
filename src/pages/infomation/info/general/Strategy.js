@@ -4,13 +4,13 @@ import { WhiteSpace, Tabs, Button } from 'antd-mobile';
 
 
 const tabs = [
-    { title: '用友产业园' },
-    { title: '数字企业馆' },
-    { title: '用友IDC' },
-    { title: '行业卖点' },
-    { title: '打单方法' },
-    { title: '高管接待' },
-    { title: '专家接待' },
+    { title: '公园' },
+    { title: '管理' },
+    { title: '图片' },
+    { title: '卖点' },
+    { title: '方法' },
+    { title: '接待' },
+    { title: '不接待' },
 ];
 
 
@@ -134,9 +134,9 @@ export default class Strategy extends React.Component {
     render() {
 
         const chanyeyuan = [
-            { name: '北京产业园', url: '' },
-            { name: '南昌产业园', url: '' },
-            { name: '三亚产业园', url: '' },
+            { name: '北京', url: '' },
+            { name: '南昌', url: '' },
+            { name: '三亚', url: '' },
 
         ]
 
@@ -155,22 +155,22 @@ export default class Strategy extends React.Component {
                     >
                         <div className="content-container">
                             {/* {titleNav('用友产业园预约')} */}
-                            {preview('用友产业园', chanyeyuan)}
+                            {preview('北京海淀区', chanyeyuan)}
                         </div>
                         <div className="content-container">
-                            {titleNav('数字企业馆预约')}
+                            {preview('北京朝阳区', chanyeyuan)}
                         </div>
                         <div className="content-container">
-                            {titleNav('用友IDC预约')}
+                            {preview('北京昌平区', chanyeyuan)}
                         </div>
                         <div className="content-container">
-                            {titleNav('用友产业园预约')}
+                            {preview('北京石景山区', chanyeyuan)}
                         </div>
                         <div className="content-container">
-                            {titleNav('用友产业园预约')}
+                            {preview('北京丰台区', chanyeyuan)}
                         </div>
                         <div className="content-container">
-                            {titleNav('用友产业园预约')}
+                            {preview('北京房山区', chanyeyuan)}
                         </div>
                     </Tabs>
                     <WhiteSpace />

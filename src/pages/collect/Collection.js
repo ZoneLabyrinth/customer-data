@@ -7,27 +7,27 @@ import  BaseList  from '@/components/baseList/BaseList';
 
 
 const titleList = [
-    { name: '客户名称', code: "ly" },
-    { name: '客户简称', code: 'cp' },
-    { name: '客户类型', code: 'dz' },
-    { name: '签约数量', code: 'zh' },
-    { name: '签约产品线', code: 'cpx' },
-    { name: '最近签约日期', code: 'khjl' },
-    { name: '最近签约合同', code: 'lkh' },
-    { name: '最近签约金额', code: 'lsqy' },
-    { name: '最近签约产品', code: 'qysl' },
+    { name: '名称', code: "ly" },
+    { name: '简称', code: 'cp' },
+    { name: '类型', code: 'dz' },
+    { name: '数量', code: 'zh' },
+    { name: '产品线', code: 'cpx' },
+    { name: '最近日期', code: 'khjl' },
+    { name: '最近cahn', code: 'lkh' },
+    { name: '最近金额', code: 'lsqy' },
+    { name: '最近产品', code: 'qysl' },
 ]
 
 const data = [
     {
-        ly: '营销云',
-        cp:'由营销',
-        dz:'拥有产业园',
-        zh:'yonyou.com',
+        ly: 'IT',
+        cp:'yun',
+        dz:'海淀区',
+        zh:'haidian.com',
         cpx:'产品线',
-        khjl:'客户经理',
-        lkh:'老客户',
-        lsqy:'隶属企业',
+        khjl:'客户',
+        lkh:'老',
+        lsqy:'隶属',
         qysl:'潜意识里',
     },
 ]

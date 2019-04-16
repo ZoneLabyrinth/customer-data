@@ -18,6 +18,7 @@ export const apiurl = {
     //舆情
     getSentimentInfo:'/inforbusinessprofilebycustomer',
     getSentimentCustomer:'/inforcorpnewsbycustomer',
-    getSentimentIndustry:'/inforindustrynewsbycustomer'
+    getSentimentIndustry:'/inforindustrynewsbycustomer',
+    getRelation:'/relationsearch'
 
 }

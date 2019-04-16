@@ -6,16 +6,16 @@ import { connect } from 'react-redux';
 import Api from '@/api/api';
 
 const tabs = [
-    { title: '行业标签' },
-    { title: '行业投标' },
-    { title: '行业样板' },
+    { title: '标签' },
+    { title: '文章' },
+    { title: '样板' },
 ];
 const title = [
-    { name: '客户代号', code: 'tm_customer_name' },
-    { name: '签约时间', code: 'cont_sign_date' },
-    { name: '签约机构', code: 'pk_branch' },
-    { name: '合同金额级别', code: 'cont_sign_tmamount' },
-    { name: '产品线', code: 'cont_sign_prod' },
+    { name: '代号', code: 'tm_customer_name' },
+    { name: '时间', code: 'cont_sign_date' },
+    { name: '机构', code: 'pk_branch' },
+    { name: '级别', code: 'cont_sign_tmamount' },
+    { name: '现成', code: 'cont_sign_prod' },
     { name: '模组', code: 'cont_sign_prod_module' },
 
 ]
@@ -72,8 +72,8 @@ class Industry extends React.Component {
 
 
     render() {
-        const modelCode = {title:'title',content:'companyintro'}
         const bidCode = {title:'project_name',content:'pid_content'}
+        const modelCode = {title:'title',content:'companyintro'}
         return (
             <div className="industry">
                 <CardTabs

@@ -2,6 +2,7 @@ import React from 'react';
 
 const SearchList = ({ list, onSearchClick }) => (
     <div>
+        {console.log(list)}
         {list.length > 0 &&
             list.map((item, index) => {
                 return (

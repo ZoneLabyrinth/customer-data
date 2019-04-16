@@ -4,11 +4,11 @@ import './info.less'
 
 import { Route ,Redirect,Switch} from 'react-router-dom'
 const navList = [
-    { title: '赢单策略', path: '/strategy' },
-    { title: '机构分享', path: '/shareOrg' },
-    { title: '产品演示', path: '/production' },
-    { title: '公司动态', path: '/dynamic' },
-    { title: '管理查询', path: '/managementSearch' }
+    { title: '策略', path: '/strategy' },
+    { title: '分享', path: '/shareOrg' },
+    { title: '演示', path: '/production' },
+    { title: '动态', path: '/dynamic' },
+    { title: '查询', path: '/managementSearch' }
 ]
 
 

@@ -85,7 +85,7 @@ class BaseNavBar extends React.Component {
 
     onChange = debounce((e) => {
         this.getData()
-    }, 1000)
+    }, 500)
 
 
     getData = async (value) => {

@@ -53,59 +53,59 @@ function renderTabBar(props) {
 
 //标签标题
 const tabs = [
-    { title: '合同应收' },
-    { title: '合同信息' },
-    { title: '订货信息' },
-    { title: '出货信息' },
-    { title: '在用产品' },
+    { title: '应收' },
+    { title: '信息' },
+    { title: '发出' },
+    { title: '收回' },
+    { title: '使用' },
 ];
 
 // 标签页内容
 const rece = [
-    { title: '合同名称', code: 'pk_contrecei' },
-    { title: '合同签约日期', code: '' },
-    { title: '合同金额', code: 'cont_all_signamount' },
-    { title: '合同收款计划', code: 'cont_receipt_plan' },
-    { title: '其中：软件收款', code: 'prod_receipt_plan' },
-    { title: '实施收款', code: 'implement_receipt_plan' },
-    { title: '开发收款', code: 'develop_receipt_plan' },
-    { title: '合同已收款', code: 'cont_all_accreceipt' },
-    { title: '合同应收款', code: 'cont_all_receivable' },
-    { title: '其中：产品应收', code: 'prod_receivable' },
-    { title: '实施应收', code: 'implement_receipt_plan' },
-    { title: '开发应收', code: 'develop_receivable' },
-    { title: '服务应收', code: 'service_receivable' },
+    { title: '名称', code: 'pk_contrecei' },
+    { title: '日期', code: 'date' },
+    { title: '金额', code: 'cont_all_signamount' },
+    { title: '计划', code: 'cont_receipt_plan' },
+    { title: '其中：收款', code: 'prod_receipt_plan' },
+    { title: '实收', code: 'implement_receipt_plan' },
+    { title: '开收', code: 'develop_receipt_plan' },
+    { title: '已收款', code: 'cont_all_accreceipt' },
+    { title: '应收款', code: 'cont_all_receivable' },
+    { title: '其中：应收', code: 'prod_receivable' },
+    { title: '实应', code: 'implement_receipt_plan' },
+    { title: '开应', code: 'develop_receivable' },
+    { title: '服务', code: 'service_receivable' },
 ]
 
 const contract = [
-    { title: '签约机构', code: 'branch_name' },
-    { title: '签约日期', code: 'sign_date' },
-    { title: '合同类型', code: 'cont_type' },
-    { title: '签约金额', code: 'cont_amount' },
-    { title: '签约产品', code: 'sign_product' },
-    { title: '项目状态', code: 'project_status' },
+    { title: '机构', code: 'branch_name' },
+    { title: '日期', code: 'sign_date' },
+    { title: '类型', code: 'cont_type' },
+    { title: '金额', code: 'cont_amount' },
+    { title: '产品', code: 'sign_product' },
+    { title: '状态', code: 'project_status' },
 ]
 
 const order = [
-    { title: '订货机构', code: 'branch_name' },
-    { title: '业务类型', code: 'busi_type' },
-    { title: '订货时间', code: 'order_date' },
-    { title: '订货金额', code: 'order_amount' },
-    { title: '订购产品', code: 'order_product' }
+    { title: '机构', code: 'branch_name' },
+    { title: '类型', code: 'busi_type' },
+    { title: '时间', code: 'order_date' },
+    { title: '金额', code: 'order_amount' },
+    { title: '产品', code: 'order_product' }
 ]
 const out = [
-    { title: '出库机构', code: 'branch_name' },
-    { title: '出库时间', code: 'out_date' },
-    { title: '注册开通时间', code: 'reg_date' },
-    { title: '出库产品', code: 'out_product' },
+    { title: '机构', code: 'branch_name' },
+    { title: '时间', code: 'out_date' },
+    { title: '注册时间', code: 'reg_date' },
+    { title: '回收', code: 'out_product' },
 
 ]
 
 const product = [
     { title: '产品线', code: 'product_line' },
-    { title: '产品', code: 'product_name' },
-    { title: '产品版本', code: 'product_ver' },
-    { title: '产品模块', code: 'product_module' }
+    { title: '食品', code: 'product_name' },
+    { title: '版本', code: 'product_ver' },
+    { title: '模块', code: 'product_module' }
 ]
 
 const mapStateToProps = state =>({
@@ -160,6 +160,7 @@ class History extends React.Component {
             out,
             product
         })
+        console.log(this.state)
     }
 
 
@@ -169,7 +170,7 @@ class History extends React.Component {
                 <CardContainer>
                     <ul className="time-container">
                         <li className="last-time">
-                            <div><i className="iconfont icon-time" style={{ color: '#E5645F' }}></i> 最近一次签约时间</div>
+                            <div><i className="iconfont icon-time" style={{ color: '#E5645F' }}></i> 最近一次时间</div>
                             <div>
                                 {this.state.mainIndex.last_deal_date}
                             </div>
@@ -190,11 +191,11 @@ class History extends React.Component {
                             {/* </span> */}
                         </li>
                         <li>
-                            <div><i className="iconfont icon-qian" style={{ color: '#FFBC3B' }}></i> 最近三年合同签约总额</div>
+                            <div><i className="iconfont icon-qian" style={{ color: '#FFBC3B' }}></i> 最近三年总额</div>
                             <div> {formatCash(this.state.mainIndex.last_deal_amount)}</div>
                         </li>
                         <li>
-                            <div><i className="iconfont icon-lvzhou_diaoxiancishu_cishu" style={{ color: '#00D0B8' }}></i> 最近三年签约次数</div>
+                            <div><i className="iconfont icon-lvzhou_diaoxiancishu_cishu" style={{ color: '#00D0B8' }}></i> 最近三年次数</div>
                             <div>{this.state.mainIndex.last_deal_number}</div>
                         </li>
                     </ul>

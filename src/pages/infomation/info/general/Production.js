@@ -11,10 +11,10 @@ const titleList = [
 
 const data = [
     {
-        ly: '营销云',
-        cp:'由营销',
-        dz:'拥有产业园',
-        zh:'yonyou.com'
+        ly: 'IT',
+        cp:'云',
+        dz:'海淀区',
+        zh:'beijing.com'
     },
 ]
 

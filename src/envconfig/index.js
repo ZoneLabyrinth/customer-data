@@ -1,6 +1,6 @@
 let baseURL,imgURL;
 if(process.env.NODE_ENV === 'development'){
-    baseURL = 'http://10.16.201.132:5000/api/v1/'
+    baseURL = 'http://rap2api.taobao.org/app/mock/165474'
 }else{
     baseURL = 'http://'
 }

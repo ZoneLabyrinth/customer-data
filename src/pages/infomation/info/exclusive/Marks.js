@@ -6,15 +6,15 @@ import Api from "@/api/api";
 
 
 const titles = [
-    { title: '客户名称', code: 'customer_name' },
-    { title: '经营方式', code: 'named_type' },
-    { title: '经营开始', code: 'start_date' },
-    { title: '经营结束', code: 'end_date' },
-    { title: '所属机构', code: 'branch_name_level3' },
-    { title: '经营产品线', code: 'product_line' },
-    { title: '客户经理', code: 'staff_name' },
-    { title: '客户经理邮箱', code: 'staff_mail' },
-    { title: '客户联系人', code: 'contacts ' },
+    { title: '名称', code: 'customer_name' },
+    { title: '方式', code: 'named_type' },
+    { title: '开始', code: 'start_date' },
+    { title: '结束', code: 'end_date' },
+    { title: '所属', code: 'branch_name_level3' },
+    { title: '县城', code: 'product_line' },
+    { title: '人员', code: 'staff_name' },
+    { title: '个人邮箱', code: 'staff_mail' },
+    { title: '联系人', code: 'contacts ' },
     { title: '职务', code: 'contacts_duty' },
     { title: '联系电话', code: 'contacts_phone' },
     { title: '邮箱', code: 'contacts_email' },
@@ -39,7 +39,7 @@ class Marks extends React.Component {
         if (customerId){
             let result = await Api.getMarksInfo(customerId)
             this.setState({
-                data: result.data
+                data: result
             })
         }
     }
