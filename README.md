@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app),use React-Redux + React-Route.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app),use [React-Redux](https://github.com/reduxjs/react-redux) + [React-Router-Dom](https://reacttraining.com/react-router/web/guides/quick-start).
 
 ## Available Scripts
 
