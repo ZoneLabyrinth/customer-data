@@ -131,7 +131,7 @@ function productScheme(_this) {
         <div>
             <CSSTransition in={_this.state.show} timeout={200} classNames="my-node">
                 <div className="scheme">
-                    <ul>
+                    <ul onClick={_this.clickItem.bind(_this)}>
                         {list.map((item, index) =>
                             <li key={index}>{item.title}</li>
                         )}
@@ -179,7 +179,7 @@ class Strategy extends React.Component {
 
     state = {
         tabIndex: 0,
-        show: true,
+        show: false,
         Ipark: {},
         digital: {},
         idc: {},
@@ -187,6 +187,8 @@ class Strategy extends React.Component {
         showImg: false,
         imgFull: false,
         imgUrl: '',
+        //缓存上次点击节点
+        item:{}
     }
 
     componentDidMount() {
@@ -221,6 +223,22 @@ class Strategy extends React.Component {
             bid: bid.root
         })
     }
+
+
+
+
+    clickItem(e){
+        if(this.state.item.style){
+            this.state.item.style.color = 'black'
+        }
+        this.setState(
+            {item:e.target}
+        )
+        // e.currentTarget.childNode.style.color = 'black'
+        e.target.style.color = '#e14c46'
+        
+    }
+
     /**
      * 
      * @param {传入img列表} list 
@@ -229,7 +247,7 @@ class Strategy extends React.Component {
         this.setState({
             showImg: true
         })
-        console.log(list)
+        // console.log(list)
         this.props.dispatch(imgList(list))
 
     }
@@ -331,7 +349,7 @@ class Strategy extends React.Component {
                         onTabClick={(tab, index) => {
                             this.setState({
                                 tabIndex: index,
-                                // show:true
+                                show:true
                             })
                         }}
 

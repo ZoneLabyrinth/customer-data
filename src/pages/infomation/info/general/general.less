@@ -2,15 +2,18 @@
 
 // 赢单策略
 .strategy-container {
-    margin       : 0 15px;
-    height       : 100%;
-    overflow     : hidden;
-    border-radius: 20px;
-    background   : white;
+    // margin       : 0 15px;
+    height          : 100%;
+    overflow        : hidden;
+    // border-radius: 20px;
+    background      : white;
 
     .sidebar {
         height    : 100%;
         background: #F8F8F8;
+        position  : relative;
+        z-index   : 0.5;
+
 
         .tabs-wrapper {
             height: 609px;
@@ -104,31 +107,191 @@
         }
 
         .pic-intro {
-            position: relative;
+            position      : relative;
             padding-bottom: 36px;
-            &>::after{
+
+            &>::after {
                 .setBottomLine()
             }
+
             .pic-content {
-                .flex(@wrap: wrap,@justify:space-between);
+                .flex(@wrap: wrap, @justify: space-between);
 
                 &>div {
-                    width    : 149px;
-                    height   : 145px;
+                    width : 149px;
+                    height: 145px;
 
                     &>div {
                         width : 100%;
                         height: 115px;
-                        background: red;
+
+                        // background: red;
+                        img {
+                            width : 100%;
+                            height: 100%;
+                        }
+                        video{
+                            width : 100%;
+                            height: 100%;
+                            position: relative;
+                            z-index: 99;
+                        }
                     }
-                    &>p{
-                        padding: 13px 0;
+
+                    &>p {
+                        padding  : 13px 0;
                         font-size: 24px;
-                        color: #666
+                        color    : #666
+                    }
+                }
+            }
+            .vid-content {
+                .flex(@wrap: wrap, @justify: space-between);
+
+                &>div {
+                    width : 260px;
+                    height: 240px;
+
+                    &>div {
+                        width : 100%;
+                        height: 200px;
+
+                        // background: red;
+                        video{
+                            width : 100%;
+                            height: 100%;
+                            
+                        }
+                    }
+
+                    &>p {
+                        padding  : 13px 0;
+                        font-size: 24px;
+                        color    : #666
                     }
                 }
             }
         }
+
+        .bid-container{
+            margin-top:35px;
+            // height: 0px;
+            padding-bottom: 23px;
+
+            position: relative;
+            p{
+                font-size: 28px;
+                font-weight: bold;
+                text-align: left;
+                .flex(@justify:space-between);
+                &>a{
+                    display: inline-block;
+                    border : 1px solid @base-color;
+                    .wh(150px, 50px);
+                    line-height  : 50px;
+                    border-radius: 25px;
+                    font-size    : 26px;
+                    color        : #333;
+                    text-align: center
+                }
+            }
+
+            &::before{
+                .setBottomLine()
+            }
+
+        }
+    
+    }
+
+    //产品方案
+    .content-product {
+        .my-node-enter {
+            left: -165px;
+        }
+
+        .my-node-enter-active {
+            left      : -22px;
+            transition: left 200ms;
+        }
+
+        .my-node-exit {
+            left: -22px;
+        }
+
+        .my-node-exit-active {
+            left      : -165px;
+            transition: left 200ms;
+        }
+
+        .my-node-exit-done {
+            left: -165px;
+        }
+
+        .scheme {
+            position  : absolute;
+            width     : 178px;
+            // left   : 0;
+            // left      : -165px;
+            height    : 100%;
+            background: white;
+            z-index: 9;
+            box-shadow: 3px 0 10px 0px rgba(0, 0, 0, 0.03);
+
+            ul {
+                li {
+                    font-size  : 24px;
+                    // height  : 47px;
+                    line-height: 71px;
+                }
+            }
+
+            span {
+                position: absolute;
+                right   : 0;
+                top     : 50%;
+            }
+        }
+
+        .scheme-content {
+            margin: 0 38px;
+
+            .pdf-card {
+                width : 100%;
+                height: 144px;
+
+                &::after {
+                    .setBottomLine();
+                }
+
+                .flex(@justify: space-between);
+
+                .img {
+                    width : 172px;
+                    height: 117px;
+                    .bg-img('../assets/img/pdf');
+                }
+                p {
+                    margin: 0 0 0 29px;
+                    flex  : 2;
+                }
+
+            }
+
+        }
+    }
+}
+//策略图片全屏
+.img-container{
+    img{
+        width: 149px;
+        height: 115px;
+    }
+}
+.img-full{
+    margin-top: 20%;
+    img{
+        width: 100%;
     }
 }
 
@@ -137,41 +300,48 @@
 
 
 //shareOrg
-.shareOrg-container{
-    .title-container{
-        margin: 30px 0;
-        .flex(@dir:column,@align:flex-start);
-        &>div{
-            width: 100%;
-            margin: 15px auto;
-            .flex(@justify:flex-start);
-            span{
-                flex:1;
+.shareOrg-container {
+    .title-container {
+        margin    : 30px 0;
+        .flex(@dir: column, @align: flex-start);
+
+        &>div {
+            width         : 100%;
+            margin        : 15px auto;
+            .flex(@justify: flex-start);
+
+            span {
+                flex: 1;
             }
-            .am-list-item{
+
+            .am-list-item {
                 height: 30px;
             }
 
-            .am-list-content{
-                color: #000000;
+            .am-list-content {
+                color     : #000000;
                 text-align: center;
             }
-            .am-list-extra{
-                color: #000000;
+
+            .am-list-extra {
+                color     : #000000;
                 text-align: center;
             }
         }
     }
-    .content-container{
-        margin: 48px 50px;
+
+    .content-container {
+        margin    : 48px 50px;
         text-align: left;
-        h2{
+
+        h2 {
             font-size: 30px;
         }
-        .content-body{
-            padding: 48px 0 31px 0;
-            font-size: 24px;
-            color: #666;
+
+        .content-body {
+            padding    : 48px 0 31px 0;
+            font-size  : 24px;
+            color      : #666;
             line-height: 30px;
         }
     }
@@ -181,33 +351,41 @@
 
 
 // managementsearch
-.management-container{
-    .am-list{
+.management-container {
+    .am-list {
         margin: 5px;
-        .am-list-body{
-            height: 63px;
+
+        .am-list-body {
+            height        : 63px;
             // line-height: 63px;
 
         }
-        .am-input-label{
+
+        .am-input-label {
             font-size: 24px;
-            color: #333;
-            flex:0.5;
+            color    : #333;
+            flex     : 0.5;
         }
-        .am-input-control{
-            &>input{
+
+        .am-input-control {
+            &>input {
                 font-size: 24px;
             }
         }
-        .am-list-line{
-            height: 63px;
+
+        .am-list-line {
+            height        : 63px;
             // line-height: 63px;
 
         }
     }
-    .am-button{
-        height: 73px;
-        margin: 10px 0 ;
+
+    .am-button {
+        height   : 73px;
+        margin   : 10px 0;
         font-size: 28px;
     }
 }
+
+
+
