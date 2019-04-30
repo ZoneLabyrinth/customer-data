@@ -15,3 +15,8 @@ export const textData = (text) =>({
     type:actionTypes.TEXT_DATA,
     text
 })
+
+export const imgList = (imgList) =>({
+    type:actionTypes.IMG_LIST,
+    imgList
+})

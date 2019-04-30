@@ -80,11 +80,28 @@ class Api extends server{
 
 
     async getRelations(params){
-
         let result = await this.axios('post',`${apiurl.getRelation}`,params)
         return result.data
     }
+    async getIpark(){
+        let result = await this.axios('get',apiurl.getIpark)
+        return result.data
+    }
 
+    async getDigital(){
+        let result = await this.axios('get',apiurl.getDigital)
+        return result.data
+    }
+
+    async getIdc(){
+        let result = await this.axios('get',apiurl.getIdc)
+        return result.data
+    }
+
+    async getBid(){
+        let result = await this.axios('get',apiurl.getBid)
+        return result.data
+    }
 
 
 }
