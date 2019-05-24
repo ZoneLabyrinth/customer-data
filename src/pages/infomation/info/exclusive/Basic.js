@@ -12,7 +12,7 @@ import store from '../../../../store/index';
 const titles = [
     { title: '用户名称', code: 'name' },
     { title: '曾用名', code: 'pre_name' },
-    { title: '简称', code: 'short_name' },
+    { title: '简称代码', code: 'short_name' },
     { title: '英文名', code: 'property3' },
     { title: '代码', code: 'creditcode' },
     { title: '注册号', code: 'regnumber' },
